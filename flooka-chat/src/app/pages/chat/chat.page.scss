@@ -1,0 +1,30 @@
+.bubble {
+    background-color: var(--ion-color-primary);
+    border-radius: 5px;
+    margin-top: 8px
+}
+
+
+ion-thumbnail {
+    --border-radius: 50px;
+}
+
+ion-input {
+    border: none;
+}
+
+p {
+    margin: 0;
+}
+
+p.message {
+    margin-bottom: 4px;
+}
+
+ion-footer {
+    background-color: var(--ion-background-color);
+    ion-input , ion-item::part(native) {
+        background-color: var(--ion-background-color) !important;
+        border: none !important;
+    }
+}

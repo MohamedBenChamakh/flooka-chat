@@ -1,0 +1,12 @@
+./flooka-chat/node_modules
+./backend/node_modules
+
+./flooka-chat/.angular
+./flooka-chat/.vscode
+
+
+./flooka-chat/package-lock.json
+./backend/package-lock.json
+
+
+
