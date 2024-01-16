@@ -48,9 +48,14 @@
       <ion-col *ngIf="isTyping==true" class="is-typing">
         <ion-thumbnail>
           <ion-img class="small-thumbnail" [src]="receiver.picture"></ion-img>
-
         </ion-thumbnail>
-        <small> is typing ...</small>
+        <div class="half light">
+          <div class="typing">
+            <span class="circle bouncing"></span>
+            <span class="circle bouncing"></span>
+            <span class="circle bouncing"></span>
+          </div>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row class="footer">

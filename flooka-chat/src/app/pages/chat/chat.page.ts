@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { Message } from '../../models/Message';
 import { Room } from '../../models/Room';
 import { User } from '../../models/User';
@@ -15,7 +15,7 @@ import { IonContent } from '@ionic/angular';
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
-export class ChatPage implements OnInit {
+export class ChatPage implements OnInit, AfterViewInit {
   private activatedRoute = inject(ActivatedRoute);
   @Input() text: string = "";
   isTyping: boolean = false;
@@ -26,7 +26,13 @@ export class ChatPage implements OnInit {
   @ViewChild('content', { static: true }) content!: IonContent;
 
 
-  constructor(private socket: Socket, private chatService: ChatService, private userService: UserService) { }
+  constructor(private socket: Socket, private chatService: ChatService, private userService: UserService) {
+
+
+  }
+  ngAfterViewInit(): void {
+
+  }
 
   ngOnInit() {
     const userId = localStorage.getItem("user_id");
@@ -69,7 +75,10 @@ export class ChatPage implements OnInit {
                       }
                       return message;
                     });
-                  }
+
+
+                  },
+                  complete: () => this.scrollToBottom()
                 }
               )
 
@@ -81,9 +90,10 @@ export class ChatPage implements OnInit {
   }
 
   scrollToBottom(): void {
+    console.log("scrollToBottom")
     setTimeout(() => {
       this.content.scrollToBottom();
-    }, 0);
+    }, 1);
   }
 
 
