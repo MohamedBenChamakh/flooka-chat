@@ -44,9 +44,9 @@ export class PreferencesPage implements OnInit {
         (await toast).present();
         this.router.navigateByUrl(`/menu/chatrooms/${result._id}`);
       },
-      error: async (err) => {
+      error: async (response) => {
         const toast = this.toastController.create({
-          message: 'Error, room could not be created, please try again!',
+          message: response.error.message,
           duration: 1500,
           position: 'bottom',
         });

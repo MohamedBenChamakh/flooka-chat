@@ -8,10 +8,7 @@ const routes: Routes = [
     path: '',
     component: ChatroomsPage
   },
-   {
-    path: ':id',
-    loadChildren: () => import('../chat/chat.module').then(m => m.ChatPageModule)
-  },
+   
 ];
 
 @NgModule({

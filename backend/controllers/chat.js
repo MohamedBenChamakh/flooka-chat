@@ -26,7 +26,7 @@ exports.createRoom = (req, res) => {
                 })
                 room.save().then((result) => res.status(201).json(result))
             } else {
-                res.status(400).json({ message: "room could not be created" })
+                res.status(404).json({ message: "No user found matching your preferences" })
             }
         }).catch(err=> console.log(err))
     }).catch(err=> console.log(err))

@@ -47,6 +47,8 @@ export class ChatPage implements OnInit {
           forkJoin(memberObservables).subscribe({
             next: (users: User[]) => {
               users.forEach((user: User) => {
+                if (user.picture == null || user.picture === "")
+                  user.picture = '/assets/blank-profile.webp'
                 if (user._id === userId) {
                   this.sender = user;
                 } else {

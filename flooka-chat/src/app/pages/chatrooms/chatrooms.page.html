@@ -20,8 +20,8 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-list >
-          <ion-item class="item-background-color" *ngFor="let room of rooms" [routerLink]="room._id">
+        <ion-list>
+          <ion-item class="item-background-color" *ngFor="let room of rooms" [routerLink]="'/chatrooms/'+room._id">
             <ion-thumbnail slot="start"><ion-img class="img-sender"
                 [src]="room.members[0].picture != null ? room.members[0].picture : '/assets/blank-profile.webp'"></ion-img></ion-thumbnail>
             <ion-label>
@@ -35,7 +35,7 @@
 </ion-content>
 
 
-<ion-fab slot="fixed" vertical="bottom" horizontal="end" color="success" routerLink="/preferences"> 
+<ion-fab slot="fixed" vertical="bottom" horizontal="end" color="success" routerLink="/preferences">
   <ion-fab-button>
     <ion-icon name="chatbubbles-outline"></ion-icon>
   </ion-fab-button>

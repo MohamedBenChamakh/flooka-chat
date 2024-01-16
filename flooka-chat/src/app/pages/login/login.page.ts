@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
     this.authService.login(formValue).subscribe({
       next: (response) => {
         this.btnLoader = false;
-        this.router.navigateByUrl("/menu/chatrooms");
+        this.router.navigateByUrl("/main/chatrooms");
       }, 
       error: (response) => {
         this.btnLoader = false;

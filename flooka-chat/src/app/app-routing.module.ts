@@ -19,19 +19,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
   },
   {
-    path: 'menu/chatrooms',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/chatrooms/chatrooms.module').then(m => m.ChatroomsPageModule)
-  },
-  {
-    path: 'menu/profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  }
-,
-  {
     path: 'preferences',
-    loadChildren: () => import('./pages/preferences/preferences.module').then( m => m.PreferencesPageModule)
-  }
+    loadChildren: () => import('./pages/preferences/preferences.module').then(m => m.PreferencesPageModule)
+  },
+  
+  {
+    path: 'main',
+    loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule)
+  },
+  
+  {
+    path: 'chatrooms/:id',
+    loadChildren: () => import('./pages/chat/chat.module').then(m => m.ChatPageModule)
+  },
 ];
 
 @NgModule({
