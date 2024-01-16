@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { Message } from '../../models/Message';
 import { Room } from '../../models/Room';
 import { User } from '../../models/User';
@@ -8,6 +8,7 @@ import { ChatService } from 'src/app/services/chat.service';
 import { UserService } from 'src/app/services/user.service';
 import { forkJoin } from 'rxjs';
 import { ChatroomsPage } from '../chatrooms/chatrooms.page';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat',
@@ -22,6 +23,7 @@ export class ChatPage implements OnInit {
   roomId!: string;
   receiver!: User;
   sender!: User;
+  @ViewChild('content', { static: true }) content!: IonContent;
 
 
   constructor(private socket: Socket, private chatService: ChatService, private userService: UserService) { }
@@ -37,6 +39,7 @@ export class ChatPage implements OnInit {
       })
       this.socket.on('typing', (value: boolean) => {
         this.isTyping = value;
+        if (value) this.scrollToBottom();
       })
       this.chatService.getRoomById(this.roomId).subscribe({
         next: (room: Room) => {
@@ -75,6 +78,12 @@ export class ChatPage implements OnInit {
         }
       });
     }
+  }
+
+  scrollToBottom(): void {
+    setTimeout(() => {
+      this.content.scrollToBottom();
+    }, 0);
   }
 
 

@@ -62,7 +62,7 @@ p.message {
     margin-bottom: 4px;
 }
 
-ion-footer {
+.footer{
     box-shadow :0px 0px 10px 2px #ebebeb;
     background-color: var(--ion-background-color);
 
@@ -91,5 +91,6 @@ ion-col.is-typing {
 
     small {
         margin-bottom: 8px;
+        color: #000;
     }
 }
