@@ -9,6 +9,7 @@
         font-size: 14px;
 
     }
+
     .img-receiver {
         width: 40px;
         height: 40px;
@@ -28,6 +29,7 @@
         display: flex;
         justify-content: flex-end;
         align-items: flex-start;
+
         .bubble-sender {
             background-color: #ebebeb;
             border-radius: 5px;
@@ -61,6 +63,7 @@ p.message {
 }
 
 ion-footer {
+    box-shadow :0px 0px 10px 2px #ebebeb;
     background-color: var(--ion-background-color);
 
     ion-input,

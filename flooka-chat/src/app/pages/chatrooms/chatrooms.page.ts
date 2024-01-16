@@ -19,21 +19,25 @@ export class ChatroomsPage implements OnInit {
   constructor(private chatService: ChatService, private userService: UserService) { }
 
   ngOnInit() {
-      this.getRoomsById();
+    this.getRoomsById();
   }
 
-  getRoomsById($event?:any){
+  getRoomsById($event?: any) {
     const userId = localStorage.getItem("user_id")
     this.chatService.getRoomsByUserId().subscribe({
       next: (result) => {
         result = result.map((room: any) => ({ ...room, members: room.members.filter((id: string) => id != userId) }));
         this.rooms = result.map((room: any) => {
           this.userService.getUserById(room.members[0]).subscribe({
-            next: (user: User) => room.members[0] = user,
+            next: (user: User) => {
+              if (user.picture == null || user.picture === "")
+                user.picture = '/assets/blank-profile.webp';
+              room.members[0] = user
+            },
           })
           return room;
         });
-        if($event)  $event.target.complete();
+        if ($event) $event.target.complete();
       },
       error: (error) => console.log(error)
     })

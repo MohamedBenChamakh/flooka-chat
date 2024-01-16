@@ -13,7 +13,11 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.userService.getPersonalInfo().subscribe({
-      next: (result) => this.user = result
+      next: (result) => {
+        if (result.picture == null || result.picture === "")
+          result.picture = '/assets/blank-profile.webp'
+        this.user = result
+      }
     })
   }
 

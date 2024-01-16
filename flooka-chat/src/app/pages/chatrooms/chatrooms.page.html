@@ -23,9 +23,10 @@
         <ion-list>
           <ion-item class="item-background-color" *ngFor="let room of rooms" [routerLink]="'/chatrooms/'+room._id">
             <ion-thumbnail slot="start"><ion-img class="img-sender"
-                [src]="room.members[0].picture != null ? room.members[0].picture : '/assets/blank-profile.webp'"></ion-img></ion-thumbnail>
+                [src]="room.members[0].picture"></ion-img></ion-thumbnail>
             <ion-label>
               {{room.members[0].username}}
+              <p> <small>{{room.createdAt | date : 'short' }}</small></p>
             </ion-label>
           </ion-item>
         </ion-list>
