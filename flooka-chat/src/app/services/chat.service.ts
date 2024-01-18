@@ -12,10 +12,7 @@ import { io } from "socket.io-client";
 export class ChatService {
 
   constructor(private http: HttpClient) { 
-    console.log("connected")
   }
-
-
 
   getRoomsByUserId(): Observable<Room[]> {
     return this.http
@@ -37,6 +34,10 @@ export class ChatService {
       .post<Room>("/chatrooms", preferences);
   }
 
+  matching(preferences: Preferences): Observable<number> {
+    return this.http
+      .post<number>("/chatrooms/find", preferences);
+  }
 
   sendMessage(message: Message): Observable<Message> {
     return this.http

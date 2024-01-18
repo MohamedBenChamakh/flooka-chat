@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/User';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Preferences } from '../../models/Preferences';
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +23,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   rooms: Room[] = [];
   formGroup!: FormGroup;
   ageNumber: number = 18;
+  matchCount: number = 0;
 
   ngOnInit(): void {
     feather.replace({ 'width': 20, 'height': 20 });
@@ -47,10 +49,18 @@ export class MenuComponent implements OnInit, OnDestroy {
 
     this.formGroup.valueChanges.subscribe(value => {
       this.ageNumber = value.age;
+      this.findMatching(value);
     })
   }
 
 
+  findMatching(preferences:Preferences){
+    this.chatService.matching(preferences).subscribe({
+      next: (value)=> {
+        console.log(value)
+        this.matchCount= value}
+    })
+  }
 
 
   onSubmit() {
