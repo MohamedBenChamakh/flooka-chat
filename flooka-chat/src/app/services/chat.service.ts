@@ -4,14 +4,18 @@ import { Observable } from "rxjs";
 import { Room } from "../models/Room";
 import { Preferences } from "../models/Preferences";
 import { Message } from "../models/Message";
+import { io } from "socket.io-client";
 
 @Injectable({
   providedIn: "root",
 })
 export class ChatService {
 
+  constructor(private http: HttpClient) { 
+    console.log("connected")
+  }
 
-  constructor(private http: HttpClient) { }
+
 
   getRoomsByUserId(): Observable<Room[]> {
     return this.http
@@ -32,6 +36,7 @@ export class ChatService {
     return this.http
       .post<Room>("/chatrooms", preferences);
   }
+
 
   sendMessage(message: Message): Observable<Message> {
     return this.http
