@@ -81,7 +81,7 @@ export class ChatroomComponent implements OnInit, OnDestroy {
             });
             this.loadMessages(roomId);
           })
-        
+
       }
     });
   }
@@ -150,6 +150,9 @@ export class ChatroomComponent implements OnInit, OnDestroy {
   initForm() {
     this.formGroup = this.formBuilder.group({
       content: [""],
+    });
+    this.formGroup.valueChanges.subscribe(value => {
+      this.text = value.content;
     })
   }
 

@@ -15,9 +15,10 @@
         </div>
         <img src="/assets/blank-profile.webp" alt="profile" class="mx-2" *ngIf="isSender(message.sender._id)" />
     </div>
+
 </div>
 <div class="chat-footer ">
-    <div *ngIf="isTyping==true" class="is-typing d-flex justify-content-start">
+    <div *ngIf="isTyping==true" class="is-typing px-3 py-2 d-flex justify-content-start">
         <img class="small-thumbnail" [src]="receiver.picture" />
         <div class="half light">
             <div class="typing">
@@ -28,7 +29,7 @@
         </div>
     </div>
     <form [formGroup]="formGroup" class="d-flex align-items-center" (ngSubmit)="onSubmit()">
-        <textarea class="form-control border-0 my-2 rounded-pill ms-2" (keyup)="onTyping()" [(ngModel)]="text"
+        <textarea class="form-control border-0  rounded-pill ms-2" (keyup)="onTyping()" 
             placeholder="Ecrire un message..." formControlName="content"></textarea>
         <button type="submit" class="btn btn-primary mx-1 ps-2"><i data-feather="send"></i></button>
     </form>

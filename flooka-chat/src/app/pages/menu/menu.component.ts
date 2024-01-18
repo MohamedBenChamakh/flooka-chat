@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   destroy$!: Subject<any>;
   rooms: Room[] = [];
   formGroup!: FormGroup;
+  ageNumber: number = 18;
 
   ngOnInit(): void {
     feather.replace({ 'width': 20, 'height': 20 });
@@ -43,7 +44,14 @@ export class MenuComponent implements OnInit, OnDestroy {
       country: ["Tunisia"],
       gender: ["Men"]
     });
+
+    this.formGroup.valueChanges.subscribe(value => {
+      this.ageNumber = value.age;
+    })
   }
+
+
+
 
   onSubmit() {
     const formValue = this.formGroup.value;
