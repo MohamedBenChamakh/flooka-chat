@@ -164,8 +164,8 @@ export class ChatroomComponent implements OnInit, OnDestroy {
       };
       this.chatService.sendMessage(message).subscribe({
         next: (res) => {
-          this.socket.emit('message', res);
-          this.messages.push(res);
+          this.socket.emit('message', message);
+          this.messages.push(message);
           this.text = "";
           this.socket.emit('typing', false)
         }

@@ -10,7 +10,7 @@
         <img src="/assets/blank-profile.webp" alt="profile" *ngIf="!isSender(message.sender._id)" />
         <div class="msg-bubble shadow-sm rounded px-3 py-2 mx-2 text-wrap text-break" [ngClass]="{'bg-primary text-light':!isSender(message.sender._id),
             'bg-other':isSender(message.sender._id)}">
-            <p class=" m-0">{{message.content}} </p>
+            <p class=" m-0">{{message.content}}  </p>
             <p class="text-date m-0 "><small>{{message.createdAt | date:'short'}}</small></p>
         </div>
         <img src="/assets/blank-profile.webp" alt="profile" class="mx-2" *ngIf="isSender(message.sender._id)" />
