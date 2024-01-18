@@ -1,0 +1,59 @@
+.chat-navbar {
+    height: 10%;
+
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+
+.chat-body {
+    height: 80%;
+
+    .msg-sender,
+    .msg-receiver {
+
+        p {
+            font-size: 14px;
+        }
+
+        p.text-date {
+            font-size: 13px;
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .msg-bubble {
+            background-color: #efefef;
+            min-width: 20%;
+            max-width: 50%;
+        }
+    }
+
+
+}
+
+.chat-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+
+    .btn {
+        border-radius: 50%;
+        width: 40px;
+        height: 38px;
+    }
+
+    textarea {
+        resize: none;
+        position: relative;
+        height: 100%;
+        background-color: #efefef;
+    }
+}

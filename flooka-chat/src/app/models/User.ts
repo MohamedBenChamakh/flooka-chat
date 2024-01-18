@@ -7,7 +7,7 @@ export class User {
     lastName?: string;
     picture?: string;
     phone?: string;
-    age?: number;
+    age?: Date;
     country?: string;
     gender?: string;
     email?: string;
@@ -19,7 +19,7 @@ export class User {
         lastName?: string,
         picture?: string,
         phone?: string,
-        age?: number,
+        age?: Date,
         country?: string,
         gender?: string,
         email?: string) {

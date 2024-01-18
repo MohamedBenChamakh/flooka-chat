@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <div class="login-card card w-25">
+                <div class="card-header bg-transparent border-0">
+                    <h2>S'authentifier</h2>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formGroup"  (submit)="onSubmit()">
+                        <input type="text" class="form-control m-1" placeholder="Nom d'utilisateur"
+                            aria-label="Username" formControlName="username">
+                        <input type="password" class="form-control m-1 mt-3" placeholder="Mot de passe"
+                            aria-label="Password" formControlName="password">
+                        <button type="submit" [disabled]="formGroup.invalid"
+                            class="btn btn-sm w-100 m-1 py-2 btn-primary mt-3">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
