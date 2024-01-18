@@ -1,12 +1,12 @@
-<div class="bg-primary border-end">
+<div class="bg-primary shadow-sm">
     <div class="menu-header p-2">
         <h2 class="text-center text-light">Flooka</h2>
     </div>
     <div class="menu-body  mt-3">
         <div class="menu-bar text-light d-flex justify-content-between align-items-center">
             <p class="ms-3 my-2"><small> {{rooms.length}} discussion(s)</small></p>
-            <button class="btn btn-sm btn-light me-3 my-2 shadow-sm "><i data-feather="user-plus"
-                    stroke-width="1"></i></button>
+            <button class="btn btn-sm btn-light me-3 my-2 shadow-sm " id="new-room" data-bs-toggle="modal"
+                data-bs-target="#preferences"><i data-feather="user-plus" stroke-width="1"></i></button>
         </div>
         <ul class="list-group list-group-flush bg-light shadow-sm ">
             <li class="list-group-item d-flex " [routerLink]="'/chatroom/'+room._id" routerLinkActive="active"
@@ -15,5 +15,26 @@
                 <p class="ms-3 mt-2">{{ room.members[0].username}}</p>
             </li>
         </ul>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="preferences" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
 </div>
