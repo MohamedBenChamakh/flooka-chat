@@ -53,7 +53,7 @@ export class ChatroomComponent implements OnInit, OnDestroy {
       this.roomId = params.id;
       this.joinRoom(this.roomId);
       this.loadRoom(params.id);
-      this.loadMessages(params.id);
+
     });
   }
 
@@ -79,23 +79,33 @@ export class ChatroomComponent implements OnInit, OnDestroy {
                 this.receiver = user;
               }
             });
+            this.loadMessages(roomId);
           })
+        
       }
     });
   }
 
   loadMessages(roomId: string) {
+    const userId = localStorage.getItem("user_id");
     this.chatService.getMessagesByRoomId(roomId)
       .pipe(takeUntil(this.destory$))
       .subscribe({
         next: (res) => {
-          this.messages = res;
+          this.messages = res.map((message: any) => {
+            if (message.sender === userId) {
+              message.sender = this.sender;
+            } else {
+              message.sender = this.receiver;
+            }
+            return message;
+          });
         }
       })
   }
 
 
-  isSender(id: string) {
+  isSender(id: string): boolean {
     const userId = localStorage.getItem("user_id");
     return userId === id;
   }

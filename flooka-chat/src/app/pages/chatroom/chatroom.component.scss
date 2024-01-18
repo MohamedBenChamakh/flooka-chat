@@ -10,6 +10,8 @@
 
 .chat-body {
     height: 80%;
+    max-height: 80%;
+    overflow-y: auto;
 
     .msg-sender,
     .msg-receiver {
@@ -29,9 +31,11 @@
         }
 
         .msg-bubble {
-            background-color: #efefef;
             min-width: 20%;
             max-width: 50%;
+        }
+        .bg-light{
+            background-color: #efefef;
         }
     }
 
@@ -53,7 +57,7 @@
     textarea {
         resize: none;
         position: relative;
-        height: 100%;
+        max-height: 40px;
         background-color: #efefef;
     }
 }

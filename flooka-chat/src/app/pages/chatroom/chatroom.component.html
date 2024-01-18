@@ -5,22 +5,21 @@
     </div>
 </div>
 <div class="chat-body">
-    <div class="d-flex m-3 "
-        [ngClass]="{'msg-sender':isSender(message.sender._id),'msg-receiver justify-content-end':!isSender(message.sender._id)}"
-        *ngFor="let message of messages">
-        <img src="/assets/blank-profile.webp" alt="profile" *ngIf="isSender(message.sender._id)" />
-        <div class="msg-bubble rounded px-3 py-2 mx-2 text-wrap text-break"
-            [ngClass]="{'bg-primary text-light':!isSender(message.sender._id)}">
+    <div class="d-flex m-3 " *ngFor="let message of messages"
+        [ngClass]="{'msg-sender':!isSender(message.sender._id),'msg-receiver justify-content-end':isSender(message.sender._id)}">
+        <img src="/assets/blank-profile.webp" alt="profile" *ngIf="!isSender(message.sender._id)" />
+        <div class="msg-bubble rounded px-3 py-2 mx-2 text-wrap text-break" [ngClass]="{'bg-primary text-light':!isSender(message.sender._id),
+            'bg-light':isSender(message.sender._id)}">
             <p class=" m-0">{{message.content}} </p>
             <p class="text-date m-0 "><small>{{message.createdAt | date:'short'}}</small></p>
         </div>
-        <img src="/assets/blank-profile.webp" alt="profile" class="mx-2" *ngIf="!isSender(message.sender._id)" />
+        <img src="/assets/blank-profile.webp" alt="profile" class="mx-2" *ngIf="isSender(message.sender._id)" />
     </div>
 </div>
 <div class="chat-footer ">
-    <form [formGroup]="formGroup" class=" d-flex align-items-center" (ngSubmit)="onSubmit()">
-        <textarea class="form-control border-0 rounded-pill ms-2" [(ngModel)]="text" placeholder="Ecrire un message..."
-            formControlName="content"></textarea>
+    <form [formGroup]="formGroup" class="d-flex align-items-center" (ngSubmit)="onSubmit()">
+        <textarea class="form-control border-0 my-2 rounded-pill ms-2" [(ngModel)]="text"
+            placeholder="Ecrire un message..." formControlName="content"></textarea>
         <button type="submit" class="btn btn-primary mx-1 ps-2"><i data-feather="send"></i></button>
     </form>
 </div>
