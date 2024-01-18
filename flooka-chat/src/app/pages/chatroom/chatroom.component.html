@@ -1,23 +1,20 @@
 <div class="chat-navbar navbar m-0 shadow-sm p-2 w-100">
     <div class="menu-profile   d-flex   align-items-center">
-        <img src="/assets/blank-profile.webp" alt="profile" />
-        <p class="ms-3 mt-3">Username</p>
+        <img [src]="sender.picture" alt="profile" />
+        <p class="ms-3 mt-3">{{sender.username}}</p>
     </div>
 </div>
 <div class="chat-body">
-    <div class="msg-sender d-flex m-3 " *ngFor="let message of messages">
-        <img src="/assets/blank-profile.webp" alt="profile" />
-        <div class="msg-bubble rounded px-3 py-2 mx-2 text-wrap text-break">
+    <div class="d-flex m-3 "
+        [ngClass]="{'msg-sender':isSender(message.sender._id),'msg-receiver   justify-content-end':!isSender(message.sender._id)}"
+        *ngFor="let message of messages">
+        <img src="/assets/blank-profile.webp" alt="profile" *ngIf="isSender(message.sender._id)" />
+        <div class="msg-bubble rounded px-3 py-2 mx-2 text-wrap text-break"
+            [ngClass]="{'bg-primary text-light':!isSender(message.sender._id)}">
             <p class=" m-0">Message from sender </p>
-            <p class="text-date m-0 text-muted"><small>22-09-2023</small></p>
-        </div>
-    </div>
-    <div class="msg-receiver d-flex m-3  justify-content-end">
-        <div class="msg-bubble bg-primary text-light rounded px-3 py-2  text-wrap text-break">
-            <p class=" m-0">Message from receiver </p>
             <p class="text-date m-0 "><small>22-09-2023</small></p>
         </div>
-        <img src="/assets/blank-profile.webp" alt="profile" class="mx-2" />
+        <img src="/assets/blank-profile.webp" alt="profile" class="mx-2" *ngIf="!isSender(message.sender._id)" />
     </div>
 </div>
 <div class="chat-footer d-flex align-items-center ">
