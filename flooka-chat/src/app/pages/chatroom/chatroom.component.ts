@@ -135,6 +135,7 @@ export class ChatroomComponent implements OnInit, OnDestroy {
 
   onClientTyping() {
     this.socket.on('typing', (value: boolean) => {
+      console.log(value)
       this.isTyping = value;
       if (value) this.scrollToBottom();
     })
