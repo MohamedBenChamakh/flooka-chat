@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>S'inscrire</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="formGroup" class="d-flex flex-column p-2" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="person-outline" slot="start"></ion-icon>
+            <ion-input placeholder="Entrez votre nom d'utilisateur" formControlName="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="mail-outline" slot="start"></ion-icon>
+            <ion-input placeholder="Entrez votre @mail" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="call-outline" slot="start"></ion-icon>
+            <ion-input placeholder="Entrez votre numéro de tél." formControlName="phone"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="key-outline" slot="start"></ion-icon>
+            <ion-input type="password" placeholder="Entrez votre mot de passe" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="balloon-outline" slot="start"></ion-icon>
+            <ion-input type="date" formControlName="age"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="male-female-outline" slot="start"></ion-icon>
+            <ion-input placeholder="Sélectionnez votre genre" formControlName="gender"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="flag-outline" slot="start"></ion-icon>
+            <ion-input placeholder="Sélectionnez votre pays" formControlName="country"></ion-input>
+          </ion-item>
+
+        </ion-list>
+        <ion-button type="submit" expand="block" color="success">Valider</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

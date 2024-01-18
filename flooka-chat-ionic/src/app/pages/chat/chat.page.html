@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="receiver">{{receiver.username}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" #content>
+
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+      <ion-title *ngIf="receiver">{{receiver.username}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row *ngFor="let message of messages"
+      [ngClass]="{'msg-sender':message.sender._id===sender._id ,'msg-receiver':message.sender._id===receiver._id}">
+      <ion-col size="2" size-sm="1" *ngIf="message.sender._id===receiver._id">
+        <ion-thumbnail>
+          <ion-img class="img-receiver" [src]="message.sender.picture"></ion-img>
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col size="10" *ngIf="message.sender._id===receiver._id">
+        <div class="bubble-receiver">
+          <p class="message">{{message.content}}</p>
+          <p><small>{{message.createdAt | date: 'short'}}</small></p>
+        </div>
+      </ion-col>
+      <ion-col size="10" *ngIf="message.sender._id===sender._id">
+        <div class="bubble-sender">
+          <p class="message">{{message.content}}</p>
+          <p><small>{{message.createdAt | date: 'short'}}</small></p>
+        </div>
+      </ion-col>
+      <ion-col size="2" *ngIf="message.sender._id===sender._id">
+        <ion-thumbnail>
+          <ion-img class="img-sender" [src]="message.sender.picture "></ion-img>
+        </ion-thumbnail>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="isTyping==true" class="is-typing">
+        <ion-thumbnail>
+          <ion-img class="small-thumbnail" [src]="receiver.picture"></ion-img>
+        </ion-thumbnail>
+        <div class="half light">
+          <div class="typing">
+            <span class="circle bouncing"></span>
+            <span class="circle bouncing"></span>
+            <span class="circle bouncing"></span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer">
+      <ion-col>
+        <ion-item lines="none">
+          <ion-textarea [(ngModel)]="text" (keyup)="write()" placeholder="Ecrire un message..."></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button (click)="onSubmit()"><ion-icon name="send-outline"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>preferences</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      
+      <ion-title size="large">preferences</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Connect with others</ion-card-title>
+      <ion-card-subtitle>Select preferences</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="formGroup">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label>Genre</ion-label>
+            <ion-segment color="primary"  formControlName="gender">
+              <ion-segment-button value="Men">
+                <ion-label>Homme</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="Woman">
+                <ion-label>Femme</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-item>
+          <ion-item>
+            <ion-range [pin]="true" [dualKnobs]="true" min="18"  formControlName="age">
+              <div slot="label">Age</div>
+            </ion-range>
+          </ion-item>
+
+          <ion-item>
+            <ion-select label="Pays" placeholder="Sélectionner un pays" formControlName="country">
+              <ion-select-option value="Tunisia">Tunisie</ion-select-option>
+              <ion-select-option value="France">France</ion-select-option>
+              <ion-select-option value="Japan">Japan</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block" (click)="onSubmit()">Commencer une discussion</ion-button>
+</ion-footer>

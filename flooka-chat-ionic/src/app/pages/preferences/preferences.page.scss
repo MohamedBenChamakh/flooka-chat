@@ -1,0 +1,12 @@
+ion-item {
+    margin-top: 5px;
+}
+
+ion-segment {
+    padding: 8px;
+
+    ion-segment-button::part(indicator-background) {
+        background-color: var(--ion-color-primary);
+      
+    }
+}

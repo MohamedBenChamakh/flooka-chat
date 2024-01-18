@@ -10,12 +10,17 @@ exports.createRoom = (req, res) => {
             acc.push(...room.members.filter(memberId => memberId !== userId));
             return acc;
         }, []);
+        const lowerAgeDate = new Date();
+        lowerAgeDate.setFullYear(lowerAgeDate.getFullYear() - req.body.age.upper);
+
+        const upperAgeDate = new Date();
+        upperAgeDate.setFullYear(upperAgeDate.getFullYear() - req.body.age.lower);
         User.findOne({
             _id: { $nin: [userId, ...usersId] },
             country: req.body.country,
             age: {
-                $gte: req.body.age.lower,
-                $lte: req.body.age.upper
+                $gte: lowerAgeDate,
+                $lte: upperAgeDate
             },
             gender: req.body.gender
         }).then((user) => {
