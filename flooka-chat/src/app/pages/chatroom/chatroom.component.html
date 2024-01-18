@@ -1,12 +1,12 @@
 <div class="chat-navbar navbar m-0 shadow-sm p-2 w-100">
-    <div class="menu-profile   d-flex   align-items-center" *ngIf="sender">
-        <img [src]="sender.picture" alt="profile" />
-        <p class="ms-3 mt-3">{{sender.username}}</p>
+    <div class="menu-profile   d-flex   align-items-center" *ngIf="receiver">
+        <img [src]="receiver.picture" alt="profile" />
+        <p class="ms-3 mt-3">{{receiver.username}}</p>
     </div>
 </div>
 <div class="chat-body">
     <div class="d-flex m-3 "
-        [ngClass]="{'msg-sender':isSender(message.sender._id),'msg-receiver   justify-content-end':!isSender(message.sender._id)}"
+        [ngClass]="{'msg-sender':isSender(message.sender._id),'msg-receiver justify-content-end':!isSender(message.sender._id)}"
         *ngFor="let message of messages">
         <img src="/assets/blank-profile.webp" alt="profile" *ngIf="isSender(message.sender._id)" />
         <div class="msg-bubble rounded px-3 py-2 mx-2 text-wrap text-break"

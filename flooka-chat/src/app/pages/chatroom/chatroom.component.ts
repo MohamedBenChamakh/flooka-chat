@@ -63,12 +63,13 @@ export class ChatroomComponent implements OnInit, OnDestroy {
     const userId = localStorage.getItem("user_id");
     this.chatService.getRoomById(roomId).subscribe({
       next: (room: Room) => {
+
         const memberObservables = room.members.map((member: any) =>
           this.userService.getUserById(member)
         );
 
-        forkJoin([memberObservables]).subscribe(
-          ([users]) => {
+        forkJoin([...memberObservables]).subscribe(
+          ([...users]) => {
             users.forEach((user: User) => {
               if (user.picture == null || user.picture === "")
                 user.picture = '/assets/blank-profile.webp'
@@ -78,7 +79,6 @@ export class ChatroomComponent implements OnInit, OnDestroy {
                 this.receiver = user;
               }
             });
-
           })
       }
     });
@@ -136,9 +136,9 @@ export class ChatroomComponent implements OnInit, OnDestroy {
     })
   }
 
-  initForm(){
-    this.formGroup= this.formBuilder.group({
-      content:[""],
+  initForm() {
+    this.formGroup = this.formBuilder.group({
+      content: [""],
     })
   }
 
@@ -154,8 +154,8 @@ export class ChatroomComponent implements OnInit, OnDestroy {
       };
       this.chatService.sendMessage(message).subscribe({
         next: (res) => {
-          this.socket.emit('message', message);
-          this.messages.push(message);
+          this.socket.emit('message', res);
+          this.messages.push(res);
           this.text = "";
           this.socket.emit('typing', false)
         }
